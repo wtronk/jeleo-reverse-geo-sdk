@@ -1,0 +1,37 @@
+{
+  "info": {
+    "name": "Jeleo Reverse Geo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "00000000-0000-0000-0000-000000000000"
+  },
+  "item": [
+    {
+      "name": "Reverse Geo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/reverse-geo?lat={{lat}}&lng={{lng}}&api_key={{api_key}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "reverse-geo"
+          ],
+          "query": [
+            { "key": "lat", "value": "{{lat}}" },
+            { "key": "lng", "value": "{{lng}}" },
+            { "key": "api_key", "value": "{{api_key}}" }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "https://slimigeo.jeleo.zone.id" },
+    { "key": "lat", "value": "48.239879" },
+    { "key": "lng", "value": "9.216766" },
+    { "key": "api_key", "value": "YOUR_API_KEY" }
+  ]
+}

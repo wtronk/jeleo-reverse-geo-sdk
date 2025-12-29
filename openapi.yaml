@@ -1,0 +1,37 @@
+openapi: 3.0.3
+info:
+  title: Jeleo Reverse Geocoding API
+  version: "0.1.0"
+servers:
+  - url: https://slimigeo.jeleo.zone.id
+paths:
+  /reverse-geo:
+    get:
+      summary: Reverse geocode a latitude/longitude into a location
+      parameters:
+        - in: query
+          name: lat
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: lng
+          required: true
+          schema:
+            type: number
+        - in: query
+          name: api_key
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Reverse geocoding result
+          content:
+            application/json:
+              schema:
+                type: object
+        '4XX':
+          description: Client error
+        '5XX':
+          description: Server error
