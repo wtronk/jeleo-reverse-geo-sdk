@@ -31,6 +31,52 @@ curl --location 'https://slimigeo.jeleo.zone.id/reverse-geo?lat=48.239879&lng=9.
 
 2) Pick your language
 
+### Go
+
+Install:
+
+```
+# Using the public module path
+go get github.com/jeleo/reverse-geo-go
+```
+
+Use:
+
+```go
+package main
+
+import (
+    "encoding/json"
+    "fmt"
+    "log"
+    "os"
+
+    jeleogo "github.com/jeleo/reverse-geo-go"
+)
+
+func main() {
+    apiKey := os.Getenv("JELEO_API_KEY")
+    if apiKey == "" { log.Fatal("Set JELEO_API_KEY") }
+
+    client, err := jeleogo.NewClient(apiKey, "")
+    if err != nil { log.Fatal(err) }
+
+    var result map[string]any
+    if err := client.ReverseGeo(48.239879, 9.216766, &result); err != nil {
+        log.Fatal(err)
+    }
+    b, _ := json.MarshalIndent(result, "", "  ")
+    fmt.Println(string(b))
+}
+```
+
+Run local example:
+
+```
+cd examples/go
+JELEO_API_KEY=YOUR_API_KEY go run .
+```
+
 ### JavaScript/TypeScript
 
 Install (Node 18+ recommended):
@@ -98,6 +144,7 @@ Endpoint
 ---
 
 ## Examples
+- Go: `examples/go` (run with `JELEO_API_KEY=... go run .`)
 - JavaScript/TypeScript: `examples/js/quickstart.ts`
 - Python: `examples/python/quickstart.py`
 
